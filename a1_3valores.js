@@ -10,25 +10,26 @@ if ((n1 > n2) && (n1 > n3)) {
         meio = n3
         menor = n2
     }
-    else   {
+    else {
         meio = n2
         menor = n3
     }
-  
-  
+
+
 }
 else if ((n2 > n1) && (n2 > n3)) {
     maior = n2;
     if (n1 < n3) {
         meio = n3
-        menor = n1   }
-    else {   {
+        menor = n1
+    }
+    else {
         meio = n1
         menor = n3
     }
 }
 
-}
+
 console.log(menor, meio, maior)
 
 
