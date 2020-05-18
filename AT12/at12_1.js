@@ -1,48 +1,30 @@
 var rs = require('readline-sync')
-var AL = []
-class alunos {
-    constructor(nome, idade) {
-        this.nome = nome;
-        this.idade = idade;
-    }
+var compara = []
+class carro {
+    constructor(marca,modelo,cor){
+    this.marca = marca;
+    this.modelo = modelo;
+    this.cor = cor;
 }
-function cadastrarAluno() {
-
-    var primeiroAluno = new alunos(
-        this.nome = rs.question('Digite o nome do aluno(a): '),
-        this.idade = rs.question('Digite a idade do aluno(a): '),
+}
+function criaCarro(marca,modelo,cor){
+    var veiculo = new carro(
+    this.marca = rs.question('Digite a marca do carro: '),
+    this.modelo = rs.question('Digite o modelo do carro: '),
+    this.cor = rs.question('Digite a cor do veiculo: '),
     )
-    return primeiroAluno
+return veiculo
 
 }
-for (var i = 0; i < 3; i++) {
-    AL.push( cadastrarAluno())
-}
-// if((AL[0].idade >= AL[1].idade ) && (AL[0].idade >= AL[2].idade) ){
-//     console.log('O aluno(a) ',AL[0].nome, 'tem a idade de ',AL[0].idade,' Anos')
-
-// }
-
-// if((AL[1].idade >= AL[2].idade ) && (AL[1].idade >= AL[0].idade) ){
-//     console.log('O aluno(a) ',AL[1].nome, 'tem a idade de ',AL[1].idade,' Anos')
-
-// }
-
-// if((AL[2].idade >= AL[1].idade ) && (AL[2].idade >= AL[0].idade) ){
-//     console.log('O aluno(a) ',AL[2].nome, 'tem a idade de ',AL[2].idade,' Anos')
-
-// }
-var maiorIdade = 0
-for (var i = 0 ; i < AL.length ;i++){
-    var idadeAtual = AL[i].idade
-    if(idadeAtual > maiorIdade){
-        maiorIdade = idadeAtual
-    }
+for (var i = 0; i < 2; i++) {
+    compara.push(criaCarro())
 
 }
+console.log(compara)
 
-for (var i = 0 ; i < AL.length;i++ ){
-    if(maiorIdade ==AL[i].idade){
-        console.log(AL[i])
-    }
+if ((compara[0].marca === compara[1].marca) && (compara[0].modelo === compara[1].modelo)){
+    console.log('Os veiculos são iguas')
+}
+else{
+    console.log('Os veiculos são diferentes')
 }

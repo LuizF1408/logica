@@ -1,3 +1,9 @@
+// Faça um programa que pergunte ao usuário se ele quer adicionar ou apenas exibir,
+// caso o usuário escolha adicionar, altere o programa inicial de cadastro de carro para
+// que não salve 1 objeto carro e sim uma coleção de carros (utilizando arrays, em vez de
+// serializar/deserializar o objeto será o array que possui os carros).
+// Após cadastrar o carro o programa deve novamente solicitar o usuário se quer exibir ou
+// adicionar, caso o usuário escolha exibir deve ser exibido todos os carros cadastrados.
 var rs = require('readline-sync');
 var fs = require('fs');
 function devolveCarro() {
@@ -12,34 +18,31 @@ function devolveCarro() {
 // var automovelEmString = JSON.stringify(automovel);
 // var caminhoDoArquivo = './data/carro.json';
 // fs.writeFileSync(caminhoDoArquivo, automovelEmString);
-
-
-// var caminhoObj = "data/carro.json"
-// var objDes = fs.readFileSync(caminhoObj)
-// var carro = JSON.parse(objDes)
 // console.log(carro)
-
-var garagem = []
-
+function abreGaragem(caminhoObj, fs) {
+    // var caminhoObj = "data/carro.json"
+    var objDes = fs.readFileSync(caminhoObj)
+    var garagem = JSON.parse(objDes)
+    return garagem
+}
+function fechaGaragem(garagem, caminhoDoArquivo, fs) {
+    var garagemjson = JSON.stringify(garagem);
+    // var caminhoDoArquivo = 'data/carro.json';
+    fs.writeFileSync(caminhoDoArquivo, garagemjson);
+}
+var caminhoJson = "carro.json"
+// var caminhoJson = rs.question('Digite o caminho do arquivo: ')
+var garagem = abreGaragem(caminhoJson, fs);
 while (true) {
     var resp = rs.keyInYN('Voce deseja adicionar outro carro ? : ')
     if (resp == true) {
         var carroNovo = devolveCarro()
         garagem.push(carroNovo)
-
-        var garagemjson = JSON.stringify(garagem);
-        var caminhoDoArquivo = 'carro.json';
-        fs.writeFileSync(caminhoDoArquivo, garagemjson);
-
-
-    } else{
-
-        console.log(garagem)
+        fechaGaragem(garagem, caminhoJson, fs)
+    } else {
+        for (var i = 0; i < garagem.length; i++) {
+        console.log("Seu automovel é um", garagem[i].marca, "de modelo", garagem[i].modelo, "de cor", garagem[i].cor);
+        }
         break
     }
-
-        
-
-
-
-}
+} // Finalizado

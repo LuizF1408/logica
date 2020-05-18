@@ -1,5 +1,7 @@
 var rs = require('readline-sync')
+var media = require('./meuMod')
 var AL = []
+var med = []
 class alunos {
     constructor(nome, idade) {
         this.nome = nome;
@@ -10,13 +12,15 @@ function cadastrarAluno() {
 
     var primeiroAluno = new alunos(
         this.nome = rs.question('Digite o nome do aluno(a): '),
-        this.idade = rs.questionInt('Digite a idade do aluno(a): '),
+        this.idade = rs.question('Digite a idade do aluno(a): '),
     )
     return primeiroAluno
 
 }
 for (var i = 0; i < 3; i++) {
     AL.push( cadastrarAluno())
+    med.push((AL[i].idade))
+
 }
 // if((AL[0].idade >= AL[1].idade ) && (AL[0].idade >= AL[2].idade) ){
 //     console.log('O aluno(a) ',AL[0].nome, 'tem a idade de ',AL[0].idade,' Anos')
@@ -46,3 +50,4 @@ for (var i = 0 ; i < AL.length;i++ ){
         console.log(AL[i])
     }
 }
+media.mediaIdade(AL)
